@@ -1,0 +1,10 @@
+{% load static%}
+<div class="card blog_card" >
+    <img src="{{i.picture.url}}" class="card-img-top" alt=""  >
+    <div class="card-body">
+    <h5 class="card-title">{{i.book_name}}</h5>
+    <h5 class="card-title">{{i.writer}}</h5>
+    <p class="comment">{{i.comment}}</p>
+    <a href="{% url 'read_blog' i.slug %}" class="btn btn-success mt-1"> Devamını Oku</a>
+    </div>
+</div>

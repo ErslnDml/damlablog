@@ -1,0 +1,33 @@
+{% extends 'index.html' %}
+{% load static%}
+
+
+{% block title %} Kelime Bahçesiღ‿‿‿‿Kategoriler{% endblock %}
+
+{% block  content %}
+{% include 'components/blog_navbar.html '%}
+
+{% for i in blog %}
+{% if id.id == i.id %}
+<div class="card    w-70 mt-5 mb-3" >
+    <div class="row ">
+      <div class="col-lg-4">
+        <img  src="{{i.picture.url}}"    class="img-fluid rounded-start p-3" alt="..." style="width: 500px; height: 700px;">
+      </div>
+      <div class="col-lg-8">
+        <div class="card-body" style="font-size: 25px; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+          <h3 class="card-title">{{i.book_name}}</h3>
+          <h5 class="card-text">{{i.writer}}</h5>
+          <p class="card-text">{{i.comment}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}   
+{% endfor %} 
+
+
+
+{% include 'components/footer.html' %}
+{% endblock %}
+

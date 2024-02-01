@@ -1,0 +1,59 @@
+{% extends 'index.html' %}
+{% load static%}
+
+
+{% block title %} Kelime Bahçesiღ‿‿‿‿Kategoriler{% endblock %}
+
+{% block  content %}
+{% include 'components/blog_navbar.html' %}
+
+<div class="wrapper">
+  <div class="row">
+  <div class="col-12 col-lg-3 mt-3">
+        <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 340px;">
+        <a href="#" class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom ">
+          <svg class="bi me-2" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+          <span class="fs-5 fw-semibold">Kitap Türlerine Göre Bloglar</span>
+        </a>
+        <div class="list-group list-group-flush border-bottom scrollarea bottom-category ">
+            {% for i in category %}
+                <a href="{% url 'category_blog' i.slug  %}" class="list-group-item list-group-item-action py-3 lh-tight" aria-current="true">
+                    <div class="d-flex w-100 align-items-center justify-content-between">
+                    <strong class="mb-1">{{i.name}}</strong>
+                    </div>
+                </a>
+          {% endfor%}
+        </div>
+      </div>
+  </div>
+  <div class="col-12 col-lg-9">
+    <div class="row">
+        {% if blog|length > 0 %}
+            {% for i in blog %}
+                {%  if i.active %}
+                    <div class="col-12 col-lg-4" >
+                        {% include 'components/_mcard.html'%}
+                    </div>
+                {% endif%}
+            {% endfor %}
+        {% else %}
+        <div class="div  mt-5"><strong>Bu Kategoriye Ait  Blog Bulunmamaktadır.</strong></div>
+        {% endif %}
+      </div>
+  </div>
+  </div>
+</div>
+  
+
+
+
+{% include 'components/footer.html' %}
+{% endblock %}
+
+
+
+
+   
+    
+  
+    

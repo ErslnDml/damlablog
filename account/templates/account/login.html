@@ -1,0 +1,38 @@
+{% extends 'index.html'%}
+{% load static %}
+{% block title %} Login {% endblock %}
+
+
+{% block content %}
+{% include 'components/blog_navbar.html' %}
+
+    <div class="container-fluid login" style="height: 900px;">
+        <div class="row p-5">
+            <form action="{% url 'login' %}" method="POST">
+                {% if error %}
+                <div class="alert alert-warning">
+                     {{error}}
+                </div>
+                {% endif%}
+                {% csrf_token %}
+                <h3>Giriş Yapın</h3>
+                <div class="mb-3">
+                    <label for="username" class="form-label">Kullanıcı Adı</label>
+                    <input type="text" name="username" class="from-control" placeholder="Kullanıcı adı">
+                </div>
+                <div class="mb-3">
+                    <label for="userpassword" class="form-label">Kullanıcı Şifre</label>
+                    <input type="password" name="userpassword" class="from-control" placeholder="Kullanıcı şifre">
+                </div>
+                <button>Giriş Yap</button>
+
+                <p class="mt-3">Hesabınız Yok Mu ?<a href="{% url 'register' %}">Üye Olun</a></p>
+                <div class="social"> 
+                    <div class="go"><i class="bi bi-google"></i>  Google</div>
+                    <div class="fb"><i class="bi bi-facebook"></i>  Facebook</div>
+                  </div>
+            </form> 
+        </div>
+    </div>
+
+{% endblock %}

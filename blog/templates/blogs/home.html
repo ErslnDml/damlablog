@@ -1,0 +1,69 @@
+{% extends 'index.html' %}
+{% load static%}
+
+
+{% block title %} Kelime Bahçesi {% endblock %}
+
+{% block  content %}
+{% include 'components/blog_navbar.html '%}
+<!-- İlk kısım -->
+<div class="container-fluid ">
+    <div class="row  ">
+      <img src="{% static 'img/kitap.jpg' %}" alt="" width="100%"  height="600" class="p-0">
+      <p class="motto">"Okumak  iki ruh arasında aşıkane bir mulakattır" <b>-Cemil Meriç</b> </p>
+    </div>
+</div>
+<!-- İlk kısım son -->
+<!-- En çok okunan -->
+<h1 >Haftanın  En Çok Okunan Kitapları </h1>
+<div class="container-fluid  mb-5 ">
+  <div class="row">
+    {% for i in blog %}
+      {% if i.best %}
+    <div class="col-12 col-lg-4 d-flex justify-content-center " >
+      <div class="card read mt-4 " style="width:400px; height: 500px;" >
+        <img src="{{i.picture.url}}" class="card-img-top p-4" alt="" style="height: 450px;">
+        <div class="card-body">
+          <h5 class="card-title text-center">{{i.book_name}}</h5>
+        </div>
+      </div>
+    </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+<!-- En çok okunan son -->
+<!-- En son eklenenler -->
+<h1 >En Son Eklenenler </h1>
+<div class="container-fluid  mt-3">
+  <div class="row">
+    {% for i in blog %}
+    {% if i.homepage %}
+      <div class="col-6 col-lg-3" >
+        <div class="card home_card" >
+          <img src="{{i.picture.url}}" class="card-img-top" alt=""  >
+          <div class="card-body">
+            <h4 class="card-title">{{i.book_name}}</h4>
+            <h5 class="card-title">{{i.writer}}</h5>
+            <p class="comment">{{i.comment}}</p>
+            <a href="{% url 'read_blog' i.slug %}" class="btn  mt-1"> Oku</a>
+          </div>
+      </div>
+      </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+<!-- En son eklenen son -->
+
+
+
+{% include 'components/footer.html' %}
+{% endblock %}
+
+
+
+   
+    
+  
+    
